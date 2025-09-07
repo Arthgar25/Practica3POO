@@ -9,8 +9,10 @@ public class Jugador
 {
     DadoLCR dado1;
     DadoLCR dado2;
-    int fichas = 0;
-    int id;
+
+    private int fichas = 0;
+    private int id;
+
     public Jugador(int id){
         dado1 = new DadoLCR();
         dado2 = new DadoLCR();
@@ -50,12 +52,19 @@ public class Jugador
                 fichas++;
                 break;
         }
+
         if(fichas<0) fichas = 0;
-        
+
         if(dado1.getValor() == 'C' || dado2.getValor() == 'C'){
             fichas *= 2;
         }
     }
     
-
+    public int getFichas(){
+        return fichas;
+    }
+    
+    public int getId(){
+        return id;
+    }
 }
