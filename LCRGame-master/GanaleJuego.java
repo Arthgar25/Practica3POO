@@ -7,8 +7,8 @@
  */
 public class GanaleJuego
 {
-    int turno = 0;
-    boolean juegoTerminado = false;
+    int turno = 1;
+    boolean terminado = false;
     Jugador jugador;
 
     public GanaleJuego(){
@@ -16,10 +16,33 @@ public class GanaleJuego
     }
 
     public void turno(){
-        if(juegoTerminado)return;
+        if(terminado)return;
         jugador.lanzarDados();
         turno++;
-        if(jugador.getFichas() >= 6 || turno >= 10)juegoTerminado = true;
+        if(jugador.getFichas() >= 6 || turno >= 10)terminado = true;
     }
-
+    
+    public int getTurno(){
+        return turno;
+    }
+    
+    public int getFichasJugador(){
+        return jugador.getFichas();
+    }
+    
+    public int getIdJugador(){
+        return jugador.getId();
+    }
+    
+    public boolean juegoTerminado(){
+        return terminado;
+    }
+    
+    public char getResultado1(){
+        return jugador.getResultado1();
+    }
+    
+    public char getResultado2(){
+        return jugador.getResultado2();
+    }
 }

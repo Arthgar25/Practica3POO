@@ -53,11 +53,12 @@ public class Jugador
                 break;
         }
 
-        if(fichas<0) fichas = 0;
 
         if(dado1.getValor() == 'C' || dado2.getValor() == 'C'){
             fichas *= 2;
         }
+        
+        if(fichas<0) fichas = 0;
     }
     
     public int getFichas(){
@@ -66,5 +67,13 @@ public class Jugador
     
     public int getId(){
         return id;
+    }
+    
+    public char getResultado1(){
+        return dado1.getValor();
+    }
+    
+    public char getResultado2(){
+        return dado2.getValor();
     }
 }
