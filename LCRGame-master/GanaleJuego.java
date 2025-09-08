@@ -11,8 +11,10 @@ public class GanaleJuego
     boolean terminado = false;
     Jugador jugador;
 
-    public GanaleJuego(){
-        jugador = new Jugador(1);
+    public GanaleJuego(int cantidadDeJugadores){
+        for(int i = 1; i <= cantidadDeJugadores; i++){
+            jugador = new Jugador(i);
+        }
     }
 
     public void turno(){

@@ -10,10 +10,15 @@ public class GameUI
     GanaleJuego juego;
 
     public GameUI(){
-        juego = new GanaleJuego();
+
         Scanner scnr = new Scanner(System.in);
         int userInput;
+        
+        System.out.print("Ingresa la cantidad de jugadores: ");
+        userInput = scnr.nextInt();
 
+        juego = new GanaleJuego(userInput);
+        
         System.out.println("Fichas del jugador: " + juego.getFichasJugador());
         System.out.println("Turno actual: " + juego.getTurno());
 
