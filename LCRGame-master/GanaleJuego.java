@@ -10,6 +10,7 @@ public class GanaleJuego
     int turno = 1;
     boolean terminado = false;
 
+    
     public int getTurno(){
         return turno;
     }

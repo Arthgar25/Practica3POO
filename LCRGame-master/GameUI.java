@@ -23,12 +23,13 @@ public class GameUI
             jugador = new Jugador(i);
             jugadores.add(jugador);
         }
-        
-        
+
+        do{
+            System.out.println("========================================");
             for (Jugador jugador : jugadores) {
-                System.out.println("========================================");
+                System.out.println("----------------------------------------");
                 System.out.println("Turno actual global: " + juego.getTurno());
-                System.out.println("Turno: jugador " + jugador.getId());
+                System.out.println("Jugador " + jugador.getId());
                 System.out.println("Ingresa 1 para lanzar dados");
                 userInput = scnr.nextInt();
                 if(userInput == 1){
@@ -72,6 +73,11 @@ public class GameUI
                     System.out.println("Fichas de jugador " + jugador.getId() + ": " + jugador.getFichas());
                 }
             }
-
+            juego.turno++;
+            if(juego.getTurno() >= 10 || jugador.getFichas() >= 6){
+                System.out.println("Juego Terminado, jugador " + jugador.getId() + " es el ganador");
+                juego.terminado = true;
+            }
+        }while(!juego.terminado());
     }
 }
