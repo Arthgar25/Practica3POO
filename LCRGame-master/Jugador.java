@@ -21,7 +21,7 @@ public class Jugador
     public String getNombre(){
         return this.nombre;
     }
-
+    
     public void setFichas(int fichas){
         this.fichas = fichas;
     }
