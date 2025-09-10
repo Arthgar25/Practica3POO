@@ -25,6 +25,7 @@ public class Dado
         caras = lados;
         valor = 1;
     }
+    
     public int getValor() {
         return valor;
     }
@@ -36,9 +37,11 @@ public class Dado
     public int getCaras() {
         return caras;
     }
+    
     public void setCaras(int caras) {
         this.caras = caras;
     }
+    
     public int lanzar() {
         Random aleatorio;
         aleatorio = new Random();

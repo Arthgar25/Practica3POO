@@ -35,6 +35,7 @@ public class DadoLCR
         }
         return valor;
     }
+    
     public char lanzar() {
         char valor = 'C';
 

@@ -7,73 +7,34 @@
  */
 public class Jugador
 {
-    DadoLCR dado1;
-    DadoLCR dado2;
-
     private int fichas = 0;
-    private int id;
+    private String nombre;
 
-    public Jugador(int id){
-        dado1 = new DadoLCR();
-        dado2 = new DadoLCR();
-        this.id = id;
+    public Jugador(String nombre){
+        this.nombre = nombre;
     }
 
-    public void lanzarDados(){
-        dado1.lanzar(); 
-        dado2.lanzar();
-
-        procesarResultados(dado1.getValor(), dado2.getValor());
-
-    }
-
-    private void procesarResultados(char resultado1, char resultado2){
-        switch(resultado1){
-            case 'L':
-                fichas--;
-                break;
-            case 'R':
-                fichas--;
-                fichas--;
-                break;
-            case '*':
-                fichas++;
-                break;
-        }
-        switch(resultado2){
-            case 'L':
-                fichas--;
-                break;
-            case 'R':
-                fichas--;
-                fichas--;
-                break;
-            case '*':
-                fichas++;
-                break;
-        }
-
-
-        if(dado1.getValor() == 'C' || dado2.getValor() == 'C'){
-            fichas *= 2;
-        }
-        
-        if(fichas<0) fichas = 0;
-    }
-    
     public int getFichas(){
         return fichas;
     }
     
-    public int getId(){
-        return id;
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public void setFichas(int fichas){
+        this.fichas = fichas;
     }
     
-    public char getResultado1(){
-        return dado1.getValor();
+    public void increaseFichas(){
+        this.fichas++;
     }
     
-    public char getResultado2(){
-        return dado2.getValor();
+    public void decreaseFichas(){
+        this.fichas--;
+    }
+    
+    public void duplicateFichas(){
+        this.fichas*=2;
     }
 }
