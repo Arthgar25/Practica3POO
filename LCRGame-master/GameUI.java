@@ -16,7 +16,7 @@ public class GameUI
 
         System.out.println("Fichas del jugador: " + juego.getFichasJugador());
         System.out.println("Turno actual: " + juego.getTurno());
-
+        // PRUEBA
         do{
             System.out.println("Juego, ingresa 1 para lanzar dados");
             userInput = scnr.nextInt();
