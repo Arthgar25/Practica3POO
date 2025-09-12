@@ -1,79 +1,21 @@
-
-/**
- * Write a description of class Jugador here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Jugador
-{
-    DadoLCR dado1;
-    DadoLCR dado2;
-
+{   
+    //Cada jugador solo tendra un nombre y sus fichas.
     private int fichas = 0;
-    private int id;
-
-    public Jugador(int id){
-        dado1 = new DadoLCR();
-        dado2 = new DadoLCR();
-        this.id = id;
-    }
-
-    public void lanzarDados(){
-        dado1.lanzar(); 
-        dado2.lanzar();
-
-        procesarResultados(dado1.getValor(), dado2.getValor());
-
-    }
-
-    private void procesarResultados(char resultado1, char resultado2){
-        switch(resultado1){
-            case 'L':
-                fichas--;
-                break;
-            case 'R':
-                fichas--;
-                fichas--;
-                break;
-            case '*':
-                fichas++;
-                break;
-        }
-        switch(resultado2){
-            case 'L':
-                fichas--;
-                break;
-            case 'R':
-                fichas--;
-                fichas--;
-                break;
-            case '*':
-                fichas++;
-                break;
-        }
-
-
-        if(dado1.getValor() == 'C' || dado2.getValor() == 'C'){
-            fichas *= 2;
-        }
-        
-        if(fichas<0) fichas = 0;
-    }
+    private String nombre;
     
-    public int getFichas(){
-        return fichas;
-    }
+    //Los metodos solo seran para constructor, getters y setters
+    public Jugador(String nombre){this.nombre = nombre;}
     
-    public int getId(){
-        return id;
-    }
+    public int getFichas(){return fichas;}
     
-    public char getResultado1(){
-        return dado1.getValor();
-    }
+    public String getNombre(){return nombre;}
     
-    public char getResultado2(){
-        return dado2.getValor();
-    }
+    public void setFichas(int fichas){this.fichas = fichas;}
+    
+    public void increaseFichas(){this.fichas++;}
+    
+    public void decreaseFichas(){this.fichas--;}
+    
+    public void duplicateFichas(){this.fichas*=2;}
 }

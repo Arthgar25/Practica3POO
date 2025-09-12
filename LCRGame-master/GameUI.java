@@ -1,68 +1,48 @@
 import java.util.*;
-/**
- * Write a description of class GameUI here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class GameUI
-{
-    GanaleJuego juego;
+
+public class GameUI {
+    private GanaleJuego juego;
 
     public GameUI(){
-        juego = new GanaleJuego();
         Scanner scnr = new Scanner(System.in);
-        int userInput;
 
-        System.out.println("Fichas del jugador: " + juego.getFichasJugador());
-        System.out.println("Turno actual: " + juego.getTurno());
-        // PRUEBA
-        do{
-            System.out.println("Juego, ingresa 1 para lanzar dados");
-            userInput = scnr.nextInt();
+        System.out.print("Ingresa la cantidad de jugadores: ");
+        int cantidad = scnr.nextInt();
+        scnr.nextLine(); // limpiar buffer
+        juego = new GanaleJuego(cantidad, scnr);
 
+        while(!juego.getTerminado()){
+            System.out.println("========================");
+            System.out.println("Turno: " + juego.getTurno());
+            System.out.println("Jugador actual: " + juego.getJugadorActual().getNombre());
+
+            System.out.println("Ingresa 1 para lanzar dados");
+            int userInput = scnr.nextInt();
             if(userInput == 1){
-                juego.turno();
-                System.out.print("Resultado de primer dado: " + juego.getResultado1());
-                switch(juego.getResultado1()){
-                    case 'L':
-                        System.out.println(", -1 ficha");
-                        break;
-                    case 'R':
-                        System.out.println(", -2 fichas");
-                        break;
-                    case '*':
-                        System.out.println(", +1 ficha");
-                        break;
-                    case 'C':
-                        System.out.println(", fichas x2 (una sola vez)");
-                        break;
-                    default:
-                        System.out.println("error");
-                        break;
-                }
-                System.out.print("Resultado de segundo dado: " + juego.getResultado2());
-                switch(juego.getResultado2()){
-                    case 'L':
-                        System.out.println(", -1 ficha");
-                        break;
-                    case 'R':
-                        System.out.println(", -2 fichas");
-                        break;
-                    case '*':
-                        System.out.println(", +1 ficha");
-                        break;
-                    case 'C':
-                        System.out.println(", fichas x2 (una sola vez)");
-                        break;
-                    default:
-                        System.out.println("error");
-                        break;     
-                }
+                juego.lanzarDados();
+                mostrarResultadoDado("primer dado", juego.getResultadoDado1());
+                mostrarResultadoDado("segundo dado", juego.getResultadoDado2());
 
-                System.out.println("Fichas del jugador: " + juego.getFichasJugador());
-                System.out.println("Turno actual: " + juego.getTurno());
+                juego.passTurn();
             }
-        }while(!juego.juegoTerminado());
+
+            // Mostrar estado de todos los jugadores
+            for(Jugador j : juego.getJugadores()){
+                System.out.println("Jugador " + j.getNombre() + " tiene " + j.getFichas() + " fichas.");
+            }
+        }
+
+        System.out.println("Juego terminado!");
+    }
+
+    private void mostrarResultadoDado(String nombre, char valor){
+        System.out.print("Resultado del " + nombre + ": " + valor);
+        switch(valor){
+            case 'L': System.out.println(", -1 ficha"); break;
+            case 'R': System.out.println(", -2 fichas"); break;
+            case '*': System.out.println(", +1 ficha"); break;
+            case 'C': System.out.println(", fichas x2 (una sola vez)"); break;
+            default: System.out.println("error"); break;
+        }
     }
 }
