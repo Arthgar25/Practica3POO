@@ -5,16 +5,10 @@ public class GanaleJuego {
     private DadoLCR dado2 = new DadoLCR();
     private int turno = 1;
     private boolean terminado = false;
-    private int jugadorActual = 0;
+    Jugador jugador;
 
-    private ArrayList<Jugador> jugadores = new ArrayList<>();
-
-    public GanaleJuego(int cantidadDeJugadores, Scanner scnr){
-        for(int i = 1; i <= cantidadDeJugadores; i++){
-            System.out.print("Nombre del jugador " + i + ": ");
-            String nombre = scnr.nextLine();
-            jugadores.add(new Jugador(nombre));
-        }
+    public GanaleJuego(){
+        jugador = new Jugador("");
     }
 
     public void lanzarDados(){
@@ -25,8 +19,6 @@ public class GanaleJuego {
     }
 
     private void procesarResultados(){
-        Jugador jugador = jugadores.get(jugadorActual);
-
         aplicarResultado(jugador, dado1.getValor());
         aplicarResultado(jugador, dado2.getValor());
 
@@ -48,22 +40,13 @@ public class GanaleJuego {
     }
 
     public void passTurn(){
-        jugadorActual++;
-        if(jugadorActual >= jugadores.size()){
-            jugadorActual = 0;  
-            turno++;
-        }
-
+        turno++;
         if(turno >= 10) terminado = true; 
     }
 
     public int getTurno(){ return turno; }
 
     public boolean getTerminado(){ return terminado; }
-
-    public Jugador getJugadorActual(){ return jugadores.get(jugadorActual); }
-
-    public List<Jugador> getJugadores(){ return new ArrayList<>(jugadores); } // copia defensiva
 
     public char getResultadoDado1(){ return dado1.getValor(); }
 

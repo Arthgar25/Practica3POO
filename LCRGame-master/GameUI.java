@@ -6,15 +6,11 @@ public class GameUI {
     public GameUI(){
         Scanner scnr = new Scanner(System.in);
 
-        System.out.print("Ingresa la cantidad de jugadores: ");
-        int cantidad = scnr.nextInt();
-        scnr.nextLine(); // limpiar buffer
-        juego = new GanaleJuego(cantidad, scnr);
+        juego = new GanaleJuego();
 
         while(!juego.getTerminado()){
             System.out.println("========================");
             System.out.println("Turno: " + juego.getTurno());
-            System.out.println("Jugador actual: " + juego.getJugadorActual().getNombre());
 
             System.out.println("Ingresa 1 para lanzar dados");
             int userInput = scnr.nextInt();
@@ -22,14 +18,9 @@ public class GameUI {
                 juego.lanzarDados();
                 mostrarResultadoDado("primer dado", juego.getResultadoDado1());
                 mostrarResultadoDado("segundo dado", juego.getResultadoDado2());
-
                 juego.passTurn();
             }
-
-            // Mostrar estado de todos los jugadores
-            for(Jugador j : juego.getJugadores()){
-                System.out.println("Jugador " + j.getNombre() + " tiene " + j.getFichas() + " fichas.");
-            }
+            System.out.println("Fichas del jugador: " + juego.jugador.getFichas());
         }
 
         System.out.println("Juego terminado!");
