@@ -1,40 +1,21 @@
-
-/**
- * Write a description of class Jugador here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Jugador
-{
+{   
+    //Cada jugador solo tendra un nombre y sus fichas.
     private int fichas = 0;
     private String nombre;
-
-    public Jugador(String nombre){
-        this.nombre = nombre;
-    }
-
-    public int getFichas(){
-        return fichas;
-    }
     
-    public String getNombre(){
-        return this.nombre;
-    }
+    //Los metodos solo seran para constructor, getters y setters
+    public Jugador(String nombre){this.nombre = nombre;}
     
-    public void setFichas(int fichas){
-        this.fichas = fichas;
-    }
+    public int getFichas(){return fichas;}
     
-    public void increaseFichas(){
-        this.fichas++;
-    }
+    public String getNombre(){return nombre;}
     
-    public void decreaseFichas(){
-        this.fichas--;
-    }
+    public void setFichas(int fichas){this.fichas = fichas;}
     
-    public void duplicateFichas(){
-        this.fichas*=2;
-    }
+    public void increaseFichas(){this.fichas++;}
+    
+    public void decreaseFichas(){this.fichas--;}
+    
+    public void duplicateFichas(){this.fichas*=2;}
 }
